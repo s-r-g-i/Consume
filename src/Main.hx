@@ -255,7 +255,9 @@ class Main {
 					message += roomNPC.name + " has something to sell.<br>";
 					
 					btns[9].setButton("Buy", "Take a look at the " + roomNPC.species.name + "'s stock", "gen:0");
-					btns[9].setClickFunc(doShop);
+					btns[9].disableButton();
+					//btns[9].setClickFunc(doShop);
+
 				case "rat":
 					//The rat's illegal shop
 					message += roomNPC.name + " has something to sell.<br>";
@@ -299,8 +301,8 @@ class Main {
 				//Workout
 				message += "Workout equipment lines the walls.<br>";
 				btns[11 - i].setButton("Workout", null, "choose");
-				btns[11 - i].disableButton();
-				//btns[11 - i].setClickFunc(doGym);
+				btns[11 - i].setClickFunc(doGym);
+
 			case 9:
 				//Gold room
 			case 10:
@@ -555,7 +557,7 @@ class Main {
 			if (roomNPC.name != "NULL") {
 				btns[9].setButton("Talk", "Talk to the " + roomNPC.species.name.toLowerCase(), 0);
 				btns[9].disableButton();
-				//btns[9].setClickFunc(doTalk);
+				//btns[9].addEventListener(MouseEvent.CLICK, doTalk);
 			}
 			
 			//Time pass, this might need to get tweaked for the gym
@@ -572,7 +574,6 @@ class Main {
 				message += "<p>{Debug} Workout time: " + workoutTime + ", fat burn: " + Math.round(playerCharacter.fat * 0.9) + "</p>";
 			}
 		}
-		
 		
 		updateHUD();
 		outputText(message, "Working Out");
